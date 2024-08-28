@@ -13,7 +13,7 @@ public class BRMO {
             if(input.equals("list")) {
                 for(int i = 0; i < listN; ++i)
                     System.out.println(i + 1 + ". " + list[i]);
-            } else {
+            } else if(listN < 100){
                 list[listN++] = input;
                 System.out.println("added: " + input);
             }
