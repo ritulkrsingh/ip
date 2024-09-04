@@ -1,20 +1,26 @@
-public class Event extends Task {
-    private String timeL;
-    private String timeR;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-    public Event(String description, String timeL, String timeR) {
+public class Event extends Task {
+    private Date timeL;
+    private Date timeR;
+    private static final SimpleDateFormat inputFormat = new SimpleDateFormat("dd-MM-yyyy");
+    private static final SimpleDateFormat outputFormat = new SimpleDateFormat("dd MMM yyyy");
+
+    public Event(String description, String timeL, String timeR) throws ParseException {
         super(description);
-        this.timeL = timeL;
-        this.timeR = timeR;
+        this.timeL = inputFormat.parse(timeL);
+        this.timeR = inputFormat.parse(timeR);
     }
 
     @Override
     public String toString() {
-        return "[E]" + super.toString() + " (from: " + timeL + " to: " + timeR + ")";
+        return "[E]" + super.toString() + " (from: " + outputFormat.format(timeL) + " to: " + outputFormat.format(timeR) + ")";
     }
 
     @Override
     public String toText() {
-        return "E | " + super.toText() + " | " + timeL + " | " + timeR;
+        return "E | " + super.toText() + " | " + inputFormat.format(timeL) + " | " + inputFormat.format(timeR);
     }
 }

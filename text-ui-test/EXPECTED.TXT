@@ -4,7 +4,7 @@ Added the following todo task:
 Here are the tasks in your list:
 1.[T][ ] borrow book
 Added the following deadline:
-[D][ ] return book (by: Sunday)
+[D][ ] return book (by: 01 Nov 2024)
 Added the following event:
-[E][ ] project meeting (from: Mon 2pm to: 4pm)
+[E][ ] project meeting (from: 02 Nov 2024 to: 03 Nov 2024)
 We shall meet again.
