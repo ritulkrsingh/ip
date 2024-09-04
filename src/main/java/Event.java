@@ -11,5 +11,10 @@ public class Event extends Task {
     @Override
     public String toString() {
         return "[E]" + super.toString() + " (from: " + timeL + " to: " + timeR + ")";
-    }   
+    }
+
+    @Override
+    public String toText() {
+        return "E | " + super.toText() + " | " + timeL + " | " + timeR;
+    }
 }
