@@ -1,3 +1,4 @@
+package BRMO;
 import java.util.Scanner;
 
 public class Ui {
