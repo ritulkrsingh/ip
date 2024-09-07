@@ -1,0 +1,2 @@
+T | 1 | nothing
+D | 0 | something | 01-01-2025

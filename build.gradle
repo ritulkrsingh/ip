@@ -4,6 +4,9 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
+group 'com.example'
+version '1.0-SNAPSHOT'
+
 repositories {
     mavenCentral()
 }
@@ -28,11 +31,11 @@ test {
 }
 
 application {
-    mainClass.set("seedu.duke.Duke")
+    mainClass.set("BRMO.BRMO")
 }
 
 shadowJar {
-    archiveBaseName = "duke"
+    archiveBaseName = "brmo"
     archiveClassifier = null
 }
 
