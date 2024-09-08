@@ -9,10 +9,14 @@ public class Event extends Task {
     private static final SimpleDateFormat inputFormat = new SimpleDateFormat("dd-MM-yyyy");
     private static final SimpleDateFormat outputFormat = new SimpleDateFormat("dd MMM yyyy");
 
-    public Event(String description, String timeL, String timeR) throws ParseException {
+    public Event(String description, String timeL, String timeR) throws ParseException, InvalidCommandException {
         super(description);
         this.timeL = inputFormat.parse(timeL);
         this.timeR = inputFormat.parse(timeR);
+
+        if (this.timeL.after(this.timeR)) {
+            throw new InvalidCommandException("Invalid event time.");
+        }
     }
 
     @Override
