@@ -1,7 +1,21 @@
 package BRMO;
 import java.text.ParseException;
 
+/**
+ * The Parser class handles the interpretation of user commands.
+ * It parses input commands, processes them, and modifies the task list accordingly.
+ */
 public class Parser {
+
+    /**
+     * Parses the user input command and executes the corresponding action.
+     *
+     * @param input    the input command from the user
+     * @param taskList the TaskList to be modified based on the command
+     * @param ui       the Ui to handle displaying output to the user
+     * @throws InvalidCommandException if the user input is invalid or has incorrect formatting
+     * @throws ParseException          if there is an error in parsing date-related commands
+     */
     public static void parse(String input, TaskList taskList, Ui ui) throws InvalidCommandException, ParseException {
         
         if (input.equals("list")) {
@@ -41,7 +55,13 @@ public class Parser {
             ui.showError("Command not found.");
         }
     }
-
+    /**
+     * Checks whether the user input starts with a specific command.
+     *
+     * @param a the user input string
+     * @param b the command to check
+     * @return true if the input starts with the specified command, false otherwise
+     */
     private static boolean checkInput(String a, String b) {
         return a.length() >= b.length() && a.substring(0, b.length()).equals(b);
     }
