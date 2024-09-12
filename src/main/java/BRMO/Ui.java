@@ -107,4 +107,13 @@ public class Ui {
         System.out.println("Nice. The following task has been marked as undone:");
         System.out.println(task);
     }
+
+    public void showFoundTasks(TaskList tasks) {
+        if (tasks.size() < 1) {
+            System.out.println("No tasks found.");
+        } else {
+            System.out.println("Here are the matching tasks in your list:");
+            System.out.println(tasks);
+        }
+    }
 }

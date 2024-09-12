@@ -83,6 +83,23 @@ public class TaskList {
         return tasks;
     }
 
+    /* Finds all tasks that contain the specified substring.
+     *
+     * @param substring the substring to search for.
+     * @return the list of tasks that contain the substring.
+     */
+    public TaskList find(String substring) {
+        ArrayList<Task> matchingTasks = new ArrayList<>();
+
+        for (Task task : tasks) {
+            if (task.contains(substring)) {
+                matchingTasks.add(task);
+            }
+        }
+
+        return new TaskList(matchingTasks);
+    }
+
     /**
      * Returns a string representation of the task list, where each task is represented on a new line,
      * with its index (1-based) and the task details.
