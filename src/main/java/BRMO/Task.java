@@ -9,6 +9,10 @@ public class Task {
         this.isDone = false;
     }
 
+    public boolean contains(String substring) {
+        return description.contains(substring);
+    }
+
     public String getStatusIcon() {
         return (isDone ? "X" : " "); // mark done task with X
     }

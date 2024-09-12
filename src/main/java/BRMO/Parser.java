@@ -1,5 +1,7 @@
 package BRMO;
+
 import java.text.ParseException;
+import java.util.ArrayList;
 
 public class Parser {
     public static void parse(String input, TaskList taskList, Ui ui) throws InvalidCommandException, ParseException {
@@ -37,6 +39,14 @@ public class Parser {
 
             ui.showTaskRemoved(taskList.getTask(i));
             taskList.removeTask(i);
+        } else if (checkInput(input, "find ")) {
+            String[] split = input.split(" ");
+            if (split.length != 2) {
+                throw new InvalidCommandException("Invalid search term.");
+            }
+            String searchTerm = split[1];
+            TaskList foundTasks = taskList.find(searchTerm);
+            ui.showFoundTasks(foundTasks);
         } else {
             ui.showError("Command not found.");
         }
