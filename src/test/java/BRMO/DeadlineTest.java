@@ -1,9 +1,10 @@
 package BRMO;
 
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.text.ParseException;
+
+import org.junit.jupiter.api.Test;
 
 public class DeadlineTest {
     @Test
@@ -17,7 +18,7 @@ public class DeadlineTest {
     public void testMarkAsDone() throws ParseException {
         Deadline deadline = new Deadline("Read a book", "13-12-2025");
         
-        for(int i = 0; i < 2; i++) {
+        for (int i = 0; i < 2; i++) {
             assertEquals("[D][ ] Read a book (by: 13 Dec 2025)", deadline.toString());
             assertEquals("D | 0 | Read a book | 13-12-2025", deadline.toText());
             deadline.mark();
