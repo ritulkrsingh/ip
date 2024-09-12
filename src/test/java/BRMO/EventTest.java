@@ -1,10 +1,11 @@
 package BRMO;
 
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.text.ParseException;
+
+import org.junit.jupiter.api.Test;
 
 public class EventTest {
     private String timeL = "25-12-2024";
@@ -23,7 +24,7 @@ public class EventTest {
         String timeR = "26-12-2024";
         Event event = new Event("Christmas Party", timeL, timeR);
 
-        for(int i = 0; i < 2; i++) {
+        for (int i = 0; i < 2; i++) {
             assertEquals("[E][ ] Christmas Party (from: 25 Dec 2024 to: 26 Dec 2024)", event.toString());
             assertEquals("E | 0 | Christmas Party | 25-12-2024 | 26-12-2024", event.toText());
             event.mark();

@@ -1,7 +1,8 @@
 package BRMO;
 
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
 
 public class TodoTest {
     @Test
@@ -14,8 +15,8 @@ public class TodoTest {
     @Test
     public void testMarkAsDone() {
         Todo todo = new Todo("Read a book");
-        
-        for(int i = 0; i < 2; i++) {
+
+        for (int i = 0; i < 2; i++) {
             assertEquals("[T][ ] Read a book", todo.toString());
             assertEquals("T | 0 | Read a book", todo.toText());
             todo.mark();

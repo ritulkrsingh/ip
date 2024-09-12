@@ -1,9 +1,10 @@
 package BRMO;
+
 import java.text.ParseException;
 
 public class Parser {
     public static void parse(String input, TaskList taskList, Ui ui) throws InvalidCommandException, ParseException {
-        
+
         if (input.equals("list")) {
             ui.showTasks(taskList);
         } else if (checkInput(input, "mark ")) {
@@ -13,7 +14,7 @@ public class Parser {
             ui.showTaskMarked(taskList.getTask(i));
         } else if (checkInput(input, "unmark ")) {
             int i = Integer.parseInt(input.substring(7)) - 1;
-            
+
             taskList.getTask(i).unmark();
             ui.showTaskUnmarked(taskList.getTask(i));
         } else if (checkInput(input, "todo ")) {
@@ -42,7 +43,7 @@ public class Parser {
         }
     }
 
-    private static boolean checkInput(String a, String b) {
+    private static boolean checkInput(final String a, final String b) {
         return a.length() >= b.length() && a.substring(0, b.length()).equals(b);
     }
 }

@@ -1,4 +1,5 @@
 package BRMO;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -27,17 +28,17 @@ public class Storage {
             String[] split = line.split(" \\| ");
 
             switch (split[0]) {
-                case "T":
-                    tasks.add(new Todo(split[2]));
-                    break;
-                case "D":
-                    tasks.add(new Deadline(split[2], split[3]));
-                    break;
-                case "E":
-                    tasks.add(new Event(split[2], split[3], split[4]));
-                    break;
-                default:
-                    throw new InvalidCommandException("Unknown task type: " + split[0]);
+            case "T":
+                tasks.add(new Todo(split[2]));
+                break;
+            case "D":
+                tasks.add(new Deadline(split[2], split[3]));
+                break;
+            case "E":
+                tasks.add(new Event(split[2], split[3], split[4]));
+                break;
+            default:
+                throw new InvalidCommandException("Unknown task type: " + split[0]);
             }
         }
 
