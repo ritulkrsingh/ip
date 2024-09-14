@@ -58,6 +58,10 @@ public class Storage {
             default:
                 throw new InvalidCommandException("Unknown task type: " + split[0]);
             }
+
+            if (split[1].equals("1")) {
+                tasks.get(tasks.size() - 1).mark();
+            }
         }
         fileScanner.close();
 
