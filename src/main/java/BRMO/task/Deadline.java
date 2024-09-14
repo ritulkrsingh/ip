@@ -1,4 +1,4 @@
-package BRMO;
+package BRMO.task;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
+import BRMO.task.Todo;
+
 public class TodoTest {
     @Test
     public void testTodoCreation() {
