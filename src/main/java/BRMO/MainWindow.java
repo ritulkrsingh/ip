@@ -29,8 +29,17 @@ public class MainWindow {
 
     @FXML
     public void initialize() throws InvalidCommandException, ParseException {
-        scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
-        brmo = new BRMO();
+        brmo = new BRMO();    
+        // Ensure scrollPane fits the width of its content
+        scrollPane.setFitToWidth(true);
+        
+        // Make sure the VBox (dialog container) is restricted to the width of the scrollPane
+        dialogContainer.setPrefWidth(scrollPane.getWidth());
+        
+        // Add a listener to adjust VBox width when scrollPane size changes
+        scrollPane.widthProperty().addListener((obs, oldVal, newVal) -> {
+            dialogContainer.setPrefWidth(newVal.doubleValue());
+        });
     }
 
     @FXML
@@ -43,6 +52,9 @@ public class MainWindow {
                 DialogBox.getBotDialog(response)
             );
             userInput.clear();
+
+            scrollPane.vvalueProperty().unbind();
+            Platform.runLater(() -> scrollPane.setVvalue(1.0));
 
             if (input.equalsIgnoreCase("bye")) {
                 PauseTransition delay = new PauseTransition(Duration.seconds(2));
