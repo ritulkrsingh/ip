@@ -39,8 +39,6 @@ public class BRMO {
         } catch (InvalidCommandException e) {
             ui.showError("Invalid command: " + e.getMessage());
         }
-
-        // ui.showGoodbye()
     }
 
     public String getResponse(String input) throws ParseException {

@@ -48,23 +48,23 @@ public class Storage {
         Scanner fileScanner = new Scanner(file);
         while (fileScanner.hasNextLine()) {
             String line = fileScanner.nextLine();
-            String[] split = line.split(" \\| ");
+            String[] words = line.split(" \\| ");
 
-            switch (split[0]) {
+            switch (words[0]) {
             case "T":
-                tasks.add(new Todo(split[2]));
+                tasks.add(new Todo(words[2]));
                 break;
             case "D":
-                tasks.add(new Deadline(split[2], split[3]));
+                tasks.add(new Deadline(words[2], words[3]));
                 break;
             case "E":
-                tasks.add(new Event(split[2], split[3], split[4]));
+                tasks.add(new Event(words[2], words[3], words[4]));
                 break;
             default:
-                throw new InvalidCommandException("Unknown task type: " + split[0]);
+                throw new InvalidCommandException("Unknown task type: " + words[0]);
             }
 
-            if (split[1].equals("1")) {
+            if (words[1].equals("1")) {
                 tasks.get(tasks.size() - 1).mark();
             }
         }

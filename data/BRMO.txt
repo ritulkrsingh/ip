@@ -1,3 +1,2 @@
 T | 1 | nothing
 T | 1 | nothing
-T | 0 | nothing

@@ -56,11 +56,7 @@ public class Ui {
         if (taskList.size() == 0) {
             return "There are no tasks in your list.";
         }
-        String res = "Here are the tasks in your list:\n";
-        for (int i = 0; i < taskList.size(); ++i) {
-            res += i + 1 + "." + taskList.getTask(i) + "\n";
-        }
-        return res;
+        return "Here are the tasks in your list:\n" + taskList;
     }
 
     /**
