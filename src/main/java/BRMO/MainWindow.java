@@ -30,13 +30,10 @@ public class MainWindow {
     @FXML
     public void initialize() throws InvalidCommandException, ParseException {
         brmo = new BRMO();    
-        // Ensure scrollPane fits the width of its content
         scrollPane.setFitToWidth(true);
         
-        // Make sure the VBox (dialog container) is restricted to the width of the scrollPane
         dialogContainer.setPrefWidth(scrollPane.getWidth());
         
-        // Add a listener to adjust VBox width when scrollPane size changes
         scrollPane.widthProperty().addListener((obs, oldVal, newVal) -> {
             dialogContainer.setPrefWidth(newVal.doubleValue());
         });
