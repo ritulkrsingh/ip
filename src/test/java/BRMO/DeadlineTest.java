@@ -6,6 +6,8 @@ import java.text.ParseException;
 
 import org.junit.jupiter.api.Test;
 
+import BRMO.task.Deadline;
+
 public class DeadlineTest {
     @Test
     public void testDeadlineCreation() throws ParseException {

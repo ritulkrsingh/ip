@@ -7,6 +7,8 @@ import java.text.ParseException;
 
 import org.junit.jupiter.api.Test;
 
+import BRMO.task.Event;
+
 public class EventTest {
     private String timeL = "25-12-2024";
     private String timeR = "26-12-2024";

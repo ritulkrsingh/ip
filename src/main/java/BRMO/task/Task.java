@@ -1,4 +1,4 @@
-package BRMO;
+package BRMO.task;
 
 public class Task {
     protected String description;

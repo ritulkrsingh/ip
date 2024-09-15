@@ -1,8 +1,10 @@
-package BRMO;
+package BRMO.task;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import BRMO.InvalidCommandException;
 
 public class Event extends Task {
     private Date timeL;

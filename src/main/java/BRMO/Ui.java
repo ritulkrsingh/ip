@@ -1,119 +1,120 @@
 package BRMO;
 
-import java.util.Scanner;
+import BRMO.task.Task;
+import BRMO.task.TaskList;
 
 /**
- * Handles user interaction and displays output to the console.
- * Provides methods to show messages, handle errors, read user input, 
- * and display task-related information.
+ * Represents the User Interface (UI) class for BRMO chatbot.
+ * This class handles interactions between the user and the application,
+ * providing responses and showing results of actions such as adding,
+ * removing, or listing tasks.
  */
 public class Ui {
-    private Scanner scanner;
 
     /**
-     * Constructs a Ui instance and initializes the input scanner.
+     * Constructs a Ui object to handle user interactions.
      */
-    public Ui() {
-        this.scanner = new Scanner(System.in);
-    }
+    public Ui() {}
 
     /**
-     * Displays the welcome message when the application starts.
-     */
-    public void showWelcome() {
-        System.out.println("Hello! I'm BetaRMinusOne; a.k.a. BRMO.");
-    }
-
-    /**
-     * Displays the goodbye message when the application ends.
-     */
-    public void showGoodbye() {
-        System.out.println("We shall meet again.");
-    }
-
-    /**
-     * Displays an error message.
+     * Returns a welcome message when the application is started.
      *
-     * @param message the error message to be displayed
+     * @return A welcome message.
      */
-    public void showError(String message) {
-        System.out.println("Error: " + message);
+    public String showWelcome() {
+        return "Hello! I'm BetaRMinusOne; a.k.a. BRMO.";
     }
 
     /**
-     * Reads a command from the user input.
+     * Returns a goodbye message when the application is closed.
      *
-     * @return the command entered by the user
+     * @return A goodbye message.
      */
-    public String readCommand() {
-        return scanner.nextLine();
+    public String showGoodbye() {
+        return "We shall meet again.";
     }
 
     /**
-     * Displays all tasks in the task list.
-     * If the task list is empty, it shows a message indicating there are no tasks.
+     * Returns an error message.
      *
-     * @param taskList the list of tasks to be displayed
-     * @throws InvalidCommandException if an invalid task index is encountered
+     * @param message The error message to display.
+     * @return A formatted error message.
      */
-    public void showTasks(TaskList taskList) throws InvalidCommandException {
+    public String showError(String message) {
+        return "Error: " + message;
+    }
+
+    /**
+     * Returns the list of tasks in the task list.
+     * If the task list is empty, a message indicating that is returned.
+     *
+     * @param taskList The TaskList containing the tasks.
+     * @return A formatted string showing the tasks in the task list.
+     * @throws InvalidCommandException If the task list cannot be retrieved.
+     */
+    public String showTasks(TaskList taskList) throws InvalidCommandException {
         if (taskList.size() == 0) {
-            System.out.println("There are no tasks in your list.");
-            return;
+            return "There are no tasks in your list.";
         }
-        System.out.println("Here are the tasks in your list:");
+        String res = "Here are the tasks in your list:\n";
         for (int i = 0; i < taskList.size(); ++i) {
-            System.out.println(i + 1 + "." + taskList.getTask(i));
+            res += i + 1 + "." + taskList.getTask(i) + "\n";
         }
+        return res;
     }
 
     /**
-     * Displays a message when a task is added to the list.
+     * Returns a message confirming that a task has been added.
      *
-     * @param task the task that was added
-     * @param type the type of task (e.g., todo, deadline, event)
+     * @param task The task that was added.
+     * @param type The type of task that was added (e.g., deadline, event).
+     * @return A formatted message showing the added task.
      */
-    public void showTaskAdded(Task task, String type) {
-        System.out.println("Added the following " + type + ":");
-        System.out.println(task);
+    public String showTaskAdded(Task task, String type) {
+        return "Added the following " + type + ":\n" + task;
     }
 
     /**
-     * Displays a message when a task is removed from the list.
+     * Returns a message confirming that a task has been removed.
      *
-     * @param task the task that was removed
+     * @param task The task that was removed.
+     * @return A formatted message showing the removed task.
      */
-    public void showTaskRemoved(Task task) {
-        System.out.println("Noted. I've removed this task:");
-        System.out.println(task);
+    public String showTaskRemoved(Task task) {
+        return "Noted. I've removed this task:\n" + task;
     }
 
     /**
-     * Displays a message when a task is marked as done.
+     * Returns a message confirming that a task has been marked as done.
      *
-     * @param task the task that was marked as done
+     * @param task The task that was marked as done.
+     * @return A formatted message showing the completed task.
      */
-    public void showTaskMarked(Task task) {
-        System.out.println("Nice. The following task has been marked as done:");
-        System.out.println(task);
+    public String showTaskMarked(Task task) {
+        return "Nice. The following task has been marked as done:\n" + task;
     }
 
     /**
-     * Displays a message when a task is marked as undone.
+     * Returns a message confirming that a task has been marked as undone.
      *
-     * @param task the task that was marked as undone
+     * @param task The task that was marked as undone.
+     * @return A formatted message showing the unmarked task.
      */
-    public void showTaskUnmarked(Task task) {
-        System.out.println("Nice. The following task has been marked as undone:");
-        System.out.println(task);
+    public String showTaskUnmarked(Task task) {
+        return "Nice. The following task has been marked as undone:\n" + task;
     }
 
-    public void showFoundTasks(TaskList tasks) {
+    /**
+     * Returns a list of tasks that match the user's search criteria.
+     * If no tasks are found, a message indicating that is returned.
+     *
+     * @param tasks The TaskList containing the found tasks.
+     * @return A formatted message showing the matching tasks.
+     */
+    public String showFoundTasks(TaskList tasks) {
         if (tasks.size() < 1) {
-            System.out.println("No tasks found.");
-        } else {
-            System.out.println("Here are the matching tasks in your list:");
-            System.out.println(tasks);
+            return "No tasks found.";
         }
+        return "Here are the matching tasks in your list:\n" + tasks;
     }
 }
