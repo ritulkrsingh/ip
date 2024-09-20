@@ -24,6 +24,9 @@ public class Parser {
      * @throws ParseException          if there is an error in parsing date-related commands
      */
     public static String parse(String input, TaskList taskList, Ui ui) throws InvalidCommandException, ParseException {
+        assert input != null : "Input should not be null";
+        assert taskList != null : "TaskList should not be null";
+        assert ui != null : "Ui should not be null";
 
         if (input.equals("list")) {
             return ui.showTasks(taskList);
