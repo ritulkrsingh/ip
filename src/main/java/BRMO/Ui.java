@@ -53,14 +53,12 @@ public class Ui {
      * @throws InvalidCommandException If the task list cannot be retrieved.
      */
     public String showTasks(TaskList taskList) throws InvalidCommandException {
+        assert taskList != null : "TaskList should not be null";
         if (taskList.size() == 0) {
             return "There are no tasks in your list.";
         }
-        String res = "Here are the tasks in your list:\n";
-        for (int i = 0; i < taskList.size(); ++i) {
-            res += i + 1 + "." + taskList.getTask(i) + "\n";
-        }
-        return res;
+        
+        return "Here are the tasks in your list:\n" + taskList;
     }
 
     /**
@@ -91,6 +89,7 @@ public class Ui {
      * @return A formatted message showing the completed task.
      */
     public String showTaskMarked(Task task) {
+        assert task.isMarked() : "Task should be marked as done";
         return "Nice. The following task has been marked as done:\n" + task;
     }
 
@@ -101,6 +100,7 @@ public class Ui {
      * @return A formatted message showing the unmarked task.
      */
     public String showTaskUnmarked(Task task) {
+        assert !task.isMarked() : "Task should be marked as undone";
         return "Nice. The following task has been marked as undone:\n" + task;
     }
 

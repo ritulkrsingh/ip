@@ -49,6 +49,7 @@ public class Storage {
         while (fileScanner.hasNextLine()) {
             String line = fileScanner.nextLine();
             String[] split = line.split(" \\| ");
+            assert split.length >= 3 : "Invalid task format in file";
 
             switch (split[0]) {
             case "T":
