@@ -37,6 +37,9 @@ public class MainWindow {
         scrollPane.widthProperty().addListener((obs, oldVal, newVal) -> {
             dialogContainer.setPrefWidth(newVal.doubleValue());
         });
+
+        String welcomeMessage = brmo.getWelcomeMessage();
+        dialogContainer.getChildren().add(DialogBox.getBotDialog(welcomeMessage));
     }
 
     @FXML

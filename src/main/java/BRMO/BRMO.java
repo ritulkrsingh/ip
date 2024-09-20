@@ -59,4 +59,8 @@ public class BRMO {
             return ui.showError(e.getMessage());
         }
     }
+
+    public String getWelcomeMessage() {
+        return ui.showWelcome();
+    }
 }
