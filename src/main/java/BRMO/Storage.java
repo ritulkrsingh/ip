@@ -50,7 +50,6 @@ public class Storage {
             String line = fileScanner.nextLine();
             String[] words = line.split(" \\| ");
             assert words.length >= 3 : "Invalid task format in file";
-            String[] words = line.split(" \\| ");
 
             switch (words[0]) {
             case "T":
