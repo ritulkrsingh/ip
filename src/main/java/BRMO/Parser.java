@@ -30,49 +30,64 @@ public class Parser {
 
         if (input.equals("list")) {
             return ui.showTasks(taskList);
-        } else if (checkInput(input, "mark ")) {
-            int i = Integer.parseInt(input.substring(5)) - 1;
+        }
+        
+        if (checkInput(input, "mark")) {
+            int i = Integer.parseInt(input.split(" ")[1]) - 1;
 
             taskList.getTask(i).mark();
             return ui.showTaskMarked(taskList.getTask(i));
-        } else if (checkInput(input, "unmark ")) {
-            int i = Integer.parseInt(input.substring(7)) - 1;
+        }
+        
+        if (checkInput(input, "unmark")) {
+            int i = Integer.parseInt(input.split(" ")[1]) - 1;
 
             taskList.getTask(i).unmark();
             return ui.showTaskUnmarked(taskList.getTask(i));
-        } else if (checkInput(input, "todo ")) {
-            return ui.showTaskAdded(taskList.addTask(new Todo(input.substring(5))), "todo task");
-        } else if (checkInput(input, "deadline ")) {
-            String[] split = input.substring(9).split(" /by ");
-            if (split.length != 2) {
+        }
+        
+        if (checkInput(input, "todo")) {
+            return ui.showTaskAdded(taskList.addTask(
+                new Todo(input.substring("todo".length() + 1))), "todo task");
+        }
+        
+        if (checkInput(input, "deadline")) {
+            String[] line = input.substring("deadline".length() + 1).split(" /by ");
+            if (line.length != 2) {
                 throw new InvalidCommandException("Invalid deadline format.");
             }
 
-            return ui.showTaskAdded(taskList.addTask(new Deadline(split[0], split[1])), "deadline");
-        } else if (checkInput(input, "event ")) {
-            String[] split = input.substring(6).split(" /from | /to ");
-            if (split.length != 3) {
+            return ui.showTaskAdded(taskList.addTask(new Deadline(line[0], line[1])), "deadline");
+        }
+        
+        if (checkInput(input, "event")) {
+            String[] line = input.substring("event".length() + 1).split(" /from | /to ");
+            if (line.length != 3) {
                 throw new InvalidCommandException("Invalid event format.");
             }
 
-            return ui.showTaskAdded(taskList.addTask(new Event(split[0], split[1], split[2])), "event");
-        } else if (checkInput(input, "delete ")) {
-            int i = Integer.parseInt(input.substring(7)) - 1;
+            return ui.showTaskAdded(taskList.addTask(new Event(line[0], line[1], line[2])), "event");
+        }
+        
+        if (checkInput(input, "delete")) {
+            int i = Integer.parseInt(input.split(" ")[1]) - 1;
 
             String res = ui.showTaskRemoved(taskList.getTask(i));
             taskList.removeTask(i);
             return res;
-        } else if (checkInput(input, "find ")) {
-            String[] split = input.split(" ");
-            if (split.length != 2) {
+        }
+        
+        if (checkInput(input, "find")) {
+            String[] line = input.split(" ");
+            if (line.length != 2) {
                 throw new InvalidCommandException("Invalid search term.");
             }
-            String searchTerm = split[1];
+            String searchTerm = line[1];
             TaskList foundTasks = taskList.find(searchTerm);
             return ui.showFoundTasks(foundTasks);
-        } else {
-            return ui.showError("Command not found.");
         }
+
+        return ui.showError("Command not found.");
     }
     /**
      * Checks whether the user input starts with a specific command.
@@ -81,7 +96,8 @@ public class Parser {
      * @param b the command to check
      * @return true if the input starts with the specified command, false otherwise
      */
-    private static boolean checkInput(final String a, final String b) {
+    private static boolean checkInput(final String a, String b) {
+        b += " ";
         return a.length() >= b.length() && a.substring(0, b.length()).equals(b);
     }
 }

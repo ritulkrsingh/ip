@@ -57,7 +57,7 @@ public class Ui {
         if (taskList.size() == 0) {
             return "There are no tasks in your list.";
         }
-        
+
         return "Here are the tasks in your list:\n" + taskList;
     }
 
