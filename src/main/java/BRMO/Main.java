@@ -14,7 +14,7 @@ public class Main extends Application {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/MainWindow.fxml"));
             AnchorPane root = fxmlLoader.load();
             Scene scene = new Scene(root);
-            primaryStage.setTitle("Chatbot");
+            primaryStage.setTitle("BRMO");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (Exception e) {
