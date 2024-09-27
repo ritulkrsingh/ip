@@ -4,9 +4,6 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
-group 'com.example'
-version '1.0-SNAPSHOT'
-
 repositories {
     mavenCentral()
 }
@@ -35,20 +32,20 @@ dependencies {
 test {
     useJUnitPlatform()
 
-    // testLogging {
-    //     events "passed", "skipped", "failed"
+        testLogging {
+            events "passed", "skipped", "failed"
 
-    //     showExceptions true
-    //     exceptionFormat "full"
-    //     showCauses true
-    //     showStackTraces true
-    //     showStandardStreams = false
-    // }
+            showExceptions true
+            exceptionFormat "full"
+            showCauses true
+            showStackTraces true
+            showStandardStreams = false
+        }
 }
 
 application {
     // mainClass.set("BRMO.BRMO")
-    mainClass.set("BRMO.Main")
+    mainClass.set("BRMO.Launcher")
 }
 
 shadowJar {
@@ -58,4 +55,9 @@ shadowJar {
 
 run{
     standardInput = System.in
+}
+
+// new
+compileJava {
+    options.release = 17
 }
